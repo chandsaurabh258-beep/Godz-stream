@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GodZ Cinema | Premium Stream</title>
+    <style>
+        :root { --primary: #e50914; --bg: #0b0b0b; --card: #1a1a1a; --text: #ffffff; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: var(--card); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        h1 { color: var(--primary); font-size: 28px; margin-bottom: 5px; }
+        p.subtitle { color: #aaaaaa; font-size: 14px; margin-bottom: 30px; }
+        
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn { padding: 16px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .btn:hover { transform: scale(1.02); }
+        
+        /* Player Colors */
+        .just-player { background-color: #007bff; color: white; border: 1px solid #0056b3; }
+        .vlc { background-color: #ff8800; color: white; border: 1px solid #cc6d00; }
+        .mx-player { background-color: #2b2b2b; color: #00d2ff; border: 1px solid #00d2ff; }
+        .cast-btn { background-color: #ffffff; color: #000000; border: 1px solid #cccccc; }
+
+        /* Tutorial Section */
+        .tutorial-box { margin-top: 40px; text-align: left; background-color: #222; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary); }
+        .tutorial-box h3 { margin-top: 0; color: #fff; font-size: 18px; }
+        .tutorial-box h4 { margin-bottom: 5px; color: #ddd; }
+        .tutorial-box p { font-size: 14px; color: #bbb; line-height: 1.5; margin-top: 5px; }
+        
+        .error { color: #ff4444; font-weight: bold; padding: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>GodZ Cinema</h1>
+        <p class="subtitle">Ultimate 4K Remux Streaming Gateway</p>
+
+        <div id="buttons" class="btn-group">
+            </div>
+
+        <div class="tutorial-box">
+            <h3>📺 How to Cast to Smart TV / Apple TV</h3>
+            
+            <h4>🔵 For Android Users (Chromecast):</h4>
+            <p>1. Install <b>Web Video Caster</b> or <b>VLC Player</b> from Play Store.<br>
+            2. Click the White "Cast to TV" or Orange "VLC" button above.<br>
+            3. Tap the Cast Icon (📶) inside the app and select your TV.</p>
+
+            <h4>🍎 For iPhone/iPad Users (AirPlay):</h4>
+            <p>1. Install <b>VLC for Mobile</b> from the App Store.<br>
+            2. Click the Orange "Play in VLC" button above.<br>
+            3. Click the AirPlay icon (📺) in VLC to stream to Apple TV or AirPlay 2-compatible TVs.</p>
+            
+            <h4>⚡ Note on 60GB+ Files:</h4>
+            <p>For the smoothest buffering-free experience on your phone, we highly recommend using <b>Just Player</b>.</p>
+        </div>
+    </div>
+
+    <script>
+        // Fetching the video link from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoUrl = urlParams.get('video');
+
+        if(videoUrl) {
+            // Generating Intent URLs
+            const justPlayerIntent = `intent:${videoUrl}#Intent;package=com.brouken.player;type=video/*;end`;
+            const vlcIntent = `intent:${videoUrl}#Intent;package=org.videolan.vlc;type=video/*;end`;
+            const mxPlayerIntent = `intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;end`;
+            const webVideoCasterIntent = `intent:${videoUrl}#Intent;package=com.instantbits.cast.webvideo;type=video/*;end`;
+
+            // Injecting buttons
+            document.getElementById('buttons').innerHTML = `
+                <a href="${justPlayerIntent}" class="btn just-player">▶️ Play in Just Player (Smooth 4K)</a>
+                <a href="${vlcIntent}" class="btn vlc">▶️ Play in VLC (Supports AirPlay/Cast)</a>
+                <a href="${webVideoCasterIntent}" class="btn cast-btn">📺 Cast to TV (Web Video Caster)</a>
+                <a href="${mxPlayerIntent}" class="btn mx-player">▶️ Play in MX Player</a>
+            `;
+        } else {
+            document.getElementById('buttons').innerHTML = "<p class='error'>❌ No video link detected! Please generate a link from the GodZ Bot.</p>";
+        }
+    </script>
+
+</body>
+</html>
