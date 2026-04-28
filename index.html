@@ -5,29 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GodZ Cinema | Premium Stream</title>
     <style>
-        :root { --primary: #e50914; --bg: #0b0b0b; --card: #1a1a1a; --text: #ffffff; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: var(--card); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: var(--primary); font-size: 28px; margin-bottom: 5px; }
-        p.subtitle { color: #aaaaaa; font-size: 14px; margin-bottom: 30px; }
+        :root { --primary: #e50914; --bg: #0b0b0b; --card: #141414; --text: #ffffff; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
         
-        .btn-group { display: flex; flex-direction: column; gap: 15px; }
-        .btn { padding: 16px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
-        .btn:hover { transform: scale(1.02); }
+        .container { width: 100%; max-width: 500px; padding: 35px 25px; background-color: var(--card); border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.8); border: 1px solid #2a2a2a; }
+        h1 { color: var(--primary); font-size: 32px; margin: 0 0 5px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;}
+        p.subtitle { color: #888; font-size: 15px; margin-bottom: 35px; font-weight: 500;}
         
-        /* Player Colors */
-        .just-player { background-color: #007bff; color: white; border: 1px solid #0056b3; }
-        .vlc { background-color: #ff8800; color: white; border: 1px solid #cc6d00; }
-        .mx-player { background-color: #2b2b2b; color: #00d2ff; border: 1px solid #00d2ff; }
-        .cast-btn { background-color: #ffffff; color: #000000; border: 1px solid #cccccc; }
+        .btn-group { display: flex; flex-direction: column; gap: 16px; margin-bottom: 35px;}
+        .btn { padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); filter: brightness(1.1); }
+        .btn:active { transform: translateY(1px); }
+        
+        /* Premium Player Colors */
+        .vlc { background: linear-gradient(135deg, #ff8800, #e65c00); color: white; border: none; }
+        .just-player { background: linear-gradient(135deg, #007bff, #0056b3); color: white; border: none; }
+        .mx-player { background: linear-gradient(135deg, #2b2b2b, #1a1a1a); color: #00d2ff; border: 1px solid #00d2ff; }
+        .cast-btn { background: linear-gradient(135deg, #ffffff, #e0e0e0); color: #000000; border: none; }
 
         /* Tutorial Section */
-        .tutorial-box { margin-top: 40px; text-align: left; background-color: #222; padding: 20px; border-radius: 8px; border-left: 4px solid var(--primary); }
-        .tutorial-box h3 { margin-top: 0; color: #fff; font-size: 18px; }
-        .tutorial-box h4 { margin-bottom: 5px; color: #ddd; }
-        .tutorial-box p { font-size: 14px; color: #bbb; line-height: 1.5; margin-top: 5px; }
+        .tutorial-box { margin-top: 20px; text-align: left; background-color: #1a1a1a; padding: 25px; border-radius: 12px; border-left: 5px solid var(--primary); box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+        .tutorial-box h3 { margin-top: 0; color: #fff; font-size: 18px; border-bottom: 1px solid #333; padding-bottom: 10px;}
+        .tutorial-box h4 { margin-bottom: 5px; color: #ddd; font-size: 15px; margin-top: 15px;}
+        .tutorial-box p { font-size: 14px; color: #aaa; line-height: 1.6; margin-top: 5px; }
+        .tutorial-box b { color: #fff; }
         
-        .error { color: #ff4444; font-weight: bold; padding: 20px; }
+        .error { color: #ff4444; font-weight: bold; padding: 20px; border: 1px solid #ff4444; border-radius: 8px; background: rgba(255, 68, 68, 0.1); }
     </style>
 </head>
 <body>
@@ -40,20 +43,20 @@
             </div>
 
         <div class="tutorial-box">
-            <h3>📺 How to Cast to Smart TV / Apple TV</h3>
+            <h3>📺 How to Cast to Smart TV</h3>
             
             <h4>🔵 For Android Users (Chromecast):</h4>
-            <p>1. Install <b>Web Video Caster</b> or <b>VLC Player</b> from Play Store.<br>
-            2. Click the White "Cast to TV" or Orange "VLC" button above.<br>
-            3. Tap the Cast Icon (📶) inside the app and select your TV.</p>
+            <p>1. Install <b>Web Video Caster</b> or <b>VLC Player</b>.<br>
+            2. Click the "Cast to TV" or "VLC" button above.<br>
+            3. Tap the Cast Icon (📶) inside the app to connect your TV.</p>
 
-            <h4>🍎 For iPhone/iPad Users (AirPlay):</h4>
-            <p>1. Install <b>VLC for Mobile</b> from the App Store.<br>
-            2. Click the Orange "Play in VLC" button above.<br>
-            3. Click the AirPlay icon (📺) in VLC to stream to Apple TV or AirPlay 2-compatible TVs.</p>
+            <h4> For iPhone/iPad (AirPlay):</h4>
+            <p>1. Install <b>VLC for Mobile</b>.<br>
+            2. Click the Orange "Play in VLC" button.<br>
+            3. Tap the AirPlay icon (📺) in VLC to stream to your TV.</p>
             
-            <h4>⚡ Note on 10GB+ Files:</h4>
-            <p>For the smoothest buffering-free experience on your phone, we highly recommend using <b>Just Player</b>.</p>
+            <h4>⚡ Pro Tip for 70GB+ Files:</h4>
+            <p>For the smoothest, buffering-free experience with Dolby & DTS audio tracks, we highly recommend using <b>VLC Player</b>. It handles heavy uncompressed 4K files flawlessly.</p>
         </div>
     </div>
 
@@ -63,21 +66,21 @@
         const videoUrl = urlParams.get('video');
 
         if(videoUrl) {
-            // Generating Intent URLs
-            const justPlayerIntent = `intent:${videoUrl}#Intent;package=com.brouken.player;type=video/*;end`;
+            // Generating Intent URLs (Bugfixed MX Player by adding type=video/*)
             const vlcIntent = `intent:${videoUrl}#Intent;package=org.videolan.vlc;type=video/*;end`;
-            const mxPlayerIntent = `intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;end`;
+            const justPlayerIntent = `intent:${videoUrl}#Intent;package=com.brouken.player;type=video/*;end`;
+            const mxPlayerIntent = `intent:${videoUrl}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;end`;
             const webVideoCasterIntent = `intent:${videoUrl}#Intent;package=com.instantbits.cast.webvideo;type=video/*;end`;
 
-            // Injecting buttons
+            // Injecting buttons with VLC on top as it is recommended
             document.getElementById('buttons').innerHTML = `
-                <a href="${justPlayerIntent}" class="btn just-player">▶️ Play in Just Player (Smooth 4K)</a>
-                <a href="${vlcIntent}" class="btn vlc">▶️ Play in VLC (Supports AirPlay/Cast)</a>
+                <a href="${vlcIntent}" class="btn vlc">▶️ Play in VLC (Recommended)</a>
+                <a href="${justPlayerIntent}" class="btn just-player">▶️ Play in Just Player</a>
                 <a href="${webVideoCasterIntent}" class="btn cast-btn">📺 Cast to TV (Web Video Caster)</a>
                 <a href="${mxPlayerIntent}" class="btn mx-player">▶️ Play in MX Player</a>
             `;
         } else {
-            document.getElementById('buttons').innerHTML = "<p class='error'>❌ No video link detected! Please generate a link from the GodZ Bot.</p>";
+            document.getElementById('buttons').innerHTML = "<div class='error'>❌ No video link detected!<br><br>Please generate a valid link from the GodZ Bot.</div>";
         }
     </script>
 
