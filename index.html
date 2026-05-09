@@ -44,20 +44,20 @@
         </div>
 
         <div class="tutorial-box">
-            <h3>📺 How to Cast to Smart TV</h3>
+            <h3>📺 Easy Casting Guide</h3>
             
-            <h4>🔵 For Android Users (Chromecast):</h4>
-            <p>1. Install <b>Web Video Caster</b> or <b>VLC Player</b>.<br>
-            2. Click the "Cast to TV" or "VLC" button above.<br>
-            3. Tap the Cast Icon (📶) inside the app to connect your TV.</p>
+            <h4>Android Users:</h4>
+            <p>1. Make sure you have the <b>Web Video Caster</b> app installed.<br>
+            2. Tap the "Cast to TV" button above.<br>
+            3. The app will open; simply tap the Cast icon (📶) at the top to connect to your Smart TV.</p>
 
-            <h4>🍎 For iPhone/iPad (AirPlay):</h4>
-            <p>1. Install <b>VLC for Mobile</b>.<br>
-            2. Click the Orange "Play in VLC" button.<br>
-            3. Tap the AirPlay icon (📺) in VLC to stream to your TV.</p>
+            <h4>iPhone / iPad Users:</h4>
+            <p>1. Install the <b>VLC for Mobile</b> app from the App Store.<br>
+            2. Tap the orange "Play in VLC" button.<br>
+            3. Once VLC opens, tap the AirPlay icon (📺) to stream the movie to your Apple TV or compatible Smart TV.</p>
             
-            <h4>⚡ Pro Tip for 10GB+ Files:</h4>
-            <p>For the smoothest, buffering-free experience, we highly recommend using <b>VLC Player</b>.</p>
+            <h4>⚡ Note on Seeking / Forwarding:</h4>
+            <p>If you cannot fast-forward the video, please allow the video to buffer for a few seconds. VLC sometimes requires a moment to calculate the file length before it allows seeking.</p>
         </div>
     </div>
 
@@ -82,9 +82,14 @@
         if(videoUrl && videoUrl.trim() !== "") {
             const safeUrl = videoUrl.trim();
             
-            // 🛑 THE FIX: Proper Chrome Android Intent Syntax 🛑
-            // URL ko intent:// format mein todna padta hai
-            const urlWithoutProtocol = safeUrl.replace(/^https?:\/\//, '');
+            // 🛑 THE FIX: Proper Chrome Android Intent Syntax + Title Parameter 🛑
+            // URL ko intent:// format mein todna padta hai, aur hum ek fake param (title) jodenge
+            // taaki VLC ko lage ki ye ek video hai stream nahi, aur usme "seek" (aage badhane) ka option on ho jaye.
+            
+            // URL me pahle se ? hai ya nahi ye check karke &title ya ?title add karenge
+            const urlWithParam = safeUrl.includes('?') ? `${safeUrl}&Godz_Stream=1` : `${safeUrl}?Godz_Stream=1`;
+
+            const urlWithoutProtocol = urlWithParam.replace(/^https?:\/\//, '');
             const scheme = safeUrl.startsWith('https') ? 'https' : 'http';
 
             const vlcIntent = `intent://${urlWithoutProtocol}#Intent;scheme=${scheme};package=org.videolan.vlc;type=video/*;end`;
