@@ -50,7 +50,7 @@
             2. Click the "Cast to TV" or "VLC" button above.<br>
             3. Tap the Cast Icon (📶) inside the app to connect your TV.</p>
 
-            <h4> For iPhone/iPad (AirPlay):</h4>
+            <h4>🍎 For iPhone/iPad (AirPlay):</h4>
             <p>1. Install <b>VLC for Mobile</b>.<br>
             2. Click the Orange "Play in VLC" button.<br>
             3. Tap the AirPlay icon (📺) in VLC to stream to your TV.</p>
@@ -63,7 +63,20 @@
     <script>
         // Fetching the video link from the URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const videoUrl = urlParams.get('video');
+        let videoUrl = urlParams.get('video');
+        let b64Url = urlParams.get('b64'); // Getting Base64 encoded link from bot
+
+        // 🔐 BASE64 DECODER LOGIC (Anti-Crash Fix)
+        if (b64Url) {
+            try {
+                // Python's urlsafe_b64encode uses '-' and '_', converting them back to standard '+' and '/'
+                b64Url = b64Url.replace(/-/g, '+').replace(/_/g, '/');
+                // Decode the link
+                videoUrl = atob(b64Url);
+            } catch (error) {
+                console.error("Link decode karne mein error:", error);
+            }
+        }
 
         if(videoUrl) {
             // Generating Intent URLs (Bugfixed MX Player by adding type=video/*)
